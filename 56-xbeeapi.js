@@ -156,8 +156,9 @@ module.exports = function(RED) {
 
                                 obj.serial = new serialp.SerialPort(port,{
                                     baudrate: baud,
-                                    parser: obj.xbee.rawParser()
-                                },true, function(err, results) { if (err) { obj.serial.emit('error',err); } });
+                                    parser: obj.xbee.rawParser(),
+                                    autoOpen: true
+                                }, function(err, results) { if (err) { obj.serial.emit('error',err); } });
 
                             obj.serial.on('error', function(err) {
                                 util.log("[xbee] serial port "+port+" error "+err);
