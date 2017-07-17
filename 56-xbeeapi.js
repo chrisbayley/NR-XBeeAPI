@@ -154,8 +154,8 @@ module.exports = function(RED) {
                                     obj._emitter.emit('data',frame);
                                 });
 
-                                obj.serial = new serialp.SerialPort(port,{
-                                    baudrate: baud,
+                                obj.serial = new serialp(port,{
+                                    baudRate: baud,
                                     parser: obj.xbee.rawParser(),
                                     autoOpen: true
                                 }, function(err, results) { if (err) { obj.serial.emit('error',err); } });
